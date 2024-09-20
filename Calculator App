@@ -1,0 +1,103 @@
+from tkinter import *
+
+# Creating the main window
+root = Tk()
+root.title("Simple Calculator")
+root.configure(bg="#2c3e50")
+root.geometry("500x600")
+
+# Defining functions for the calculator operations
+
+def ad():
+    z.set("+")
+    num1 = x.get()
+    num2 = y.get()
+    ans = num1 + num2
+    l1.configure(text=ans)
+
+def sb():
+    z.set("-")
+    num1 = x.get()
+    num2 = y.get()
+    ans = num1 - num2
+    l1.configure(text=ans)
+
+def ml():
+    z.set("x")
+    num1 = x.get()
+    num2 = y.get()
+    ans = num1 * num2
+    l1.configure(text=ans)
+
+def dv():
+    z.set("÷")
+    num1 = x.get()
+    num2 = y.get()
+    ans = num1 / num2
+    l1.configure(text=ans)
+
+def md():
+    z.set("%")
+    num1 = x.get()
+    num2 = y.get()
+    ans = num1 % num2
+    l1.configure(text=ans)
+
+def acl():
+    x.set(0)
+    y.set(0)
+    z.set("")
+    l1.configure(text="")
+
+# Creating labels, entries, and buttons with enhanced appearance
+
+Label(root, text="Enter First Number:", bg="#ecf0f1", font="Helvetica 12 bold").place(x=50, y=50, width=200, height=40)
+Label(root, text="Enter Second Number:", bg="#ecf0f1", font="Helvetica 12 bold").place(x=50, y=100, width=200, height=40)
+Label(root, text="Operation:", bg="#ecf0f1", font="Helvetica 12 bold").place(x=50, y=150, width=200, height=40)
+
+x = IntVar()
+y = IntVar()
+z = StringVar()
+
+e1 = Entry(root, textvariable=x, font="Helvetica 15", bd=5, relief=GROOVE)
+e1.place(x=280, y=50, width=150, height=40)
+
+e2 = Entry(root, textvariable=y, font="Helvetica 15", bd=5, relief=GROOVE)
+e2.place(x=280, y=100, width=150, height=40)
+
+e3 = Entry(root, textvariable=z, font="Helvetica 15", bd=5, relief=GROOVE, state="readonly", justify="center")
+e3.place(x=280, y=150, width=150, height=40)
+
+l1 = Label(root, text="0", bg="#ecf0f1", font="Helvetica 20 bold", relief=SUNKEN)
+l1.place(x=150, y=220, width=200, height=50)
+
+button_style = {
+    "font": "Helvetica 20 bold",
+    "bg": "#3498db",
+    "fg": "white",
+    "bd": 5,
+    "relief": RAISED,
+    "activebackground": "#2980b9",
+    "activeforeground": "white"
+}
+
+a1 = Button(root, text="+", command=ad, **button_style)
+a1.place(x=80, y=300, width=80, height=80)
+
+s1 = Button(root, text="-", command=sb, **button_style)
+s1.place(x=180, y=300, width=80, height=80)
+
+m1 = Button(root, text="x", command=ml, **button_style)
+m1.place(x=280, y=300, width=80, height=80)
+
+d1 = Button(root, text="÷", command=dv, **button_style)
+d1.place(x=380, y=300, width=80, height=80)
+
+m2 = Button(root, text="%", command=md, **button_style)
+m2.place(x=130, y=400, width=80, height=80)
+
+ac = Button(root, text="AC", command=acl, font="Helvetica 20 bold", bg="#e74c3c", fg="white", bd=5, relief=RAISED,
+            activebackground="#c0392b", activeforeground="white")
+ac.place(x=230, y=400, width=150, height=80)
+
+root.mainloop()
